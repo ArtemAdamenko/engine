@@ -56,7 +56,7 @@ class Router {
                 }
 
                 // Вызываем действие контроллера с параметрами
-                call_user_func_array(array($controller, $action), $params);
+                call_user_func_array(array($controller, $action), $parameters);
             }
         }
 
