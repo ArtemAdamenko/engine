@@ -35,15 +35,17 @@ class Router {
                 $internalRoute = preg_replace("~$pattern~", $route, $uri);
                 // Разбиваем внутренний путь на сегменты.
                 $segments = explode('/', $internalRoute);
+                //имя модуля для пути
+                $module = ucfirst(array_shift($segments));
                 // Первый сегмент — контроллер.
-                $controller = ucfirst(array_shift($segments)).'Controller';
+                $controller = $module.'Controller';
                 // Второй — действие.
                 $action = 'action'.ucfirst(array_shift($segments));
                 // Остальные сегменты — параметры.
                 $parameters = $segments;
 
                 // Подключаем файл контроллера, если он имеется
-                $controllerFile = ROOT.'../app/controllers/'.$controller.'.php';
+                $controllerFile = ROOT.'../modules/'.$module.'/controllers/'.$controller.'.php';
                 if(file_exists($controllerFile)){
                     include($controllerFile);
                 }

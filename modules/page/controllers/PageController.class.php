@@ -1,4 +1,5 @@
 <?php
+include_once('./model/PageModel.php');
 class PageController extends Controller {
     // параметр отдаётся из правила 'page/([-_a-z0-9]+)' => 'page/show/$1',
     function actionShow($url = null){
@@ -6,7 +7,7 @@ class PageController extends Controller {
         $page = $this->getPage($url);
 
         // выводим её при помощи View
-        $this->view->render('page', array('page' => $page));
+        $this->view->render('page/view/index.php', array('page' => $page));
     }
 }
 ?>
