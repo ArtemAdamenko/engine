@@ -1,11 +1,7 @@
 <?php
-// подключаем необходимые файлы
-define('ROOT', dirname(__FILE__));
-require_once(ROOT.'/classes/Route.class.php');
-
+include_once('/config/define.inc.php');
 // подключаем конфигурацию URL
-$routes=ROOT.'/config/routes.php';
-
+$routes= ROUTES;
 // запускаем роутер
 $router = new Router($routes);
 $router->run();

@@ -1,12 +1,12 @@
 <?php
-include_once('.../classes/DB.class.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/engine/config/define.inc.php');
 /**
  * класс Модель страниц
  * @author Artem Adamenko <artem.adamenko@gmail.com>
  */
 class PageModel{
     public function __construct(){
-
+        DB::connect('localhost', 'root', '', 'my');
     }
     public function __clone(){
 
@@ -18,7 +18,7 @@ class PageModel{
      */
     public function getPage($url){
         $condition['id'] = $url;
-        $page = DB::select("title, content", $condition);
+        DB::select("title, content", $condition);
         $result = DB::getResult();
         return $result;
     }

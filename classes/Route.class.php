@@ -26,7 +26,6 @@ class Router {
     function run(){
         // Получаем URI.
         $uri = $this->getURI();
-
         // Пытаемся применить к нему правила из конфигуации.
         foreach($this->routes as $pattern => $route){
             // Если правило совпало.
@@ -36,27 +35,28 @@ class Router {
                 // Разбиваем внутренний путь на сегменты.
                 $segments = explode('/', $internalRoute);
                 //имя модуля для пути
-                $module = ucfirst(array_shift($segments));
+                $module = ucfirst($segments[2]);
+                //$module = ucfirst(array_shift($segments));
                 // Первый сегмент — контроллер.
-                $controller = $module.'Controller';
+                //$controller = $module.'Controller';
+                $controller = 'DefaultController';
                 // Второй — действие.
-                $action = 'action'.ucfirst(array_shift($segments));
+                //$action = 'action'.ucfirst(array_shift($segments));
+                $action = 'action'.ucfirst($segments[3]);
                 // Остальные сегменты — параметры.
                 $parameters = $segments;
-
                 // Подключаем файл контроллера, если он имеется
-                $controllerFile = ROOT.'../modules/'.$module.'/controllers/'.$controller.'.php';
+                $controllerFile = ROOT.'\modules\\'.$module.'\controllers\DefaultController.class.php';
+
                 if(file_exists($controllerFile)){
                     include($controllerFile);
                 }
-
                 // Если не загружен нужный класс контроллера или в нём нет
                 // нужного метода — 404
                 if(!is_callable(array($controller, $action))){
                     header("HTTP/1.0 404 Not Found");
                     return;
                 }
-
                 // Вызываем действие контроллера с параметрами
                 call_user_func_array(array($controller, $action), $parameters);
             }
