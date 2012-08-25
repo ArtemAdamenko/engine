@@ -42,7 +42,7 @@ class Router {
                 $controller = 'DefaultController';
                 // Второй — действие.
                 //$action = 'action'.ucfirst(array_shift($segments));
-                $action = 'action'.ucfirst($segments[3]);
+                $action = 'action'.ucfirst($segments[4]);
                 // Остальные сегменты — параметры.
                 $parameters = $segments;
                 // Подключаем файл контроллера, если он имеется
