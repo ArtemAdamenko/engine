@@ -23,8 +23,8 @@ class DefaultController extends Controller {
     public static function actionShow($url = null){
         //$pageModel = new PageModel();
         //$page = $pageModel->getPage($url);
-        $page['title'] = "aaa";
-        $page['content'] = "aaa";
+        $page['title'] = "Title";
+        $page['content'] = "Content";
         View::render('Page','index', array('title' => $page['title'], 'content'=>$page['content']));
     }
 }
