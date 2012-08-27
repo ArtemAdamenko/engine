@@ -33,9 +33,9 @@ class View {
      * @return mixed шаблон
      */
     private static function fetch(){
-        self::$template = '/modules/'.self::$module.'/view/'.self::$template;
+        self::$template = '/view/'.self::$module.'/'.self::$template;
         $content = self::fetchPartial();
-        self::$template = '/modules/'.self::$module.'/view/layout';
+        self::$template = '/view/layout';
         self::$params = array('content' => $content);
         return self::fetchPartial();
     }
