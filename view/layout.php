@@ -5,12 +5,10 @@
     <title>My engine</title>
 </head>
 <body>
-<div id="header">
-    <h2>header</h2>
-</div>
+<?php include_once('header.php')?>
+
 <?=$content?>
-<div id="footer">
-    <h2>footer</h2>
-</div>
+
+<?php include_once('footer.php')?>
 </body>
 </html>

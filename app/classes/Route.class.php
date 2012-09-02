@@ -36,10 +36,11 @@ class Router {
             if(preg_match("~$pattern~", $uri)){
                 $internalRoute = preg_replace("~$pattern~", $route, $uri);
                 $segments = explode('/', $internalRoute);
-                $module = $segments[2];
-                if ($module == ""){
-                    $module = 'home';
+                //потому что localhost(localhost/engine, должно быть engine, лишний элемент)
+                if (in_array('engine', $segments)){
+                    $site = array_shift($segments);
                 }
+                $module = $segments[0];
                 $parameters = $segments;
                 $moduleFile = ROOT.'app\modules\\'.$module.'\\'.$module.'Module.php';
                 if(file_exists($moduleFile)){
