@@ -1,5 +1,7 @@
 <?php
+//запросы из бд begin
     $page['title'] = "Title";
     $page['content'] = "Content";
-    View::render('page','index', array('title' => $page['title'], 'content'=>$page['content']));
+//запросы из бд end
+    View::render($module, $template, array('title' => $page['title'], 'content'=>$page['content']));
 ?>
