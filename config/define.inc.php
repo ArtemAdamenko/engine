@@ -6,7 +6,7 @@ if (!defined('ROUTES'))
 require_once(ROOT.'app/classes/Route.class.php');
 require_once(ROOT.'app/classes/View.class.php');
 require_once(ROOT.'app/classes/DB.class.php');
+require_once(ROOT.'app/classes/validation.class.php');
 
-require_once(ROOT.'app/modules/page/model/pageModel.class.php');
 
 ?>
