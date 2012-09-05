@@ -3,5 +3,5 @@
     $page['title'] = "Title";
     $page['content'] = "Content";
 //запросы из бд end
-    View::render($module, $template, array('title' => $page['title'], 'content'=>$page['content']));
+    View::render(self::MODULE, self::$template, array('title' => $page['title'], 'content'=>$page['content']));
 ?>

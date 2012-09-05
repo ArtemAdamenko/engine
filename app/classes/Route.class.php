@@ -1,4 +1,7 @@
 <?php
+/*Класс маршрутизации
+@author Artem Adamenko <artem.adamenko@gmail.com>
+*/
 class Router {
     /*@param $routes Хранит конфигурацию маршрутов.*/
     private $routes;
@@ -13,7 +16,7 @@ class Router {
     /**Метод получает URI. Несколько вариантов представлены для надёжности.
      * @return string url
      */
-    function getURI(){
+    static function getURI(){
         if(!empty($_SERVER['REQUEST_URI'])) {
             return trim($_SERVER['REQUEST_URI'], '/');
         }
@@ -36,20 +39,27 @@ class Router {
             if(preg_match("~$pattern~", $uri)){
                 $internalRoute = preg_replace("~$pattern~", $route, $uri);
                 $segments = explode('/', $internalRoute);
-                //потому что localhost(localhost/engine, должно быть engine, лишний элемент)
-                if (in_array('engine', $segments)){
-                    $site = array_shift($segments);
+                if (in_array('engine', $segments)){                             //потому что localhost
+                    $site = array_shift($segments);                             //(localhost/engine, должно быть engine,
+                    unset($site);                                               //лишний элемент)
                 }
-                $module = $segments[0];
-                $parameters = $segments;
+                $module = array_shift($segments);
                 $moduleFile = ROOT.'app\modules\\'.$module.'\\'.$module.'Module.php';
                 if(file_exists($moduleFile)){
                     include($moduleFile);
+                    $action = $module.'Route';
+                    call_user_func(array($module.'Module', $action));
+                }else{
+                    $this->redirect();
                 }
-                $action = $module.'Route';
-                call_user_func_array(array($module.'Module', $action), $param = array($parameters));
             }
         }
+        $this->redirect();
+    }
+    /*
+     * Перенаправление на 404 ошибку
+     */
+    static function redirect(){
         header("HTTP/1.0 404 Not Found");
         return;
     }
