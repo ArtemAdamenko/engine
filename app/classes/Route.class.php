@@ -40,8 +40,7 @@ class Router {
                 $internalRoute = preg_replace("~$pattern~", $route, $uri);
                 $segments = explode('/', $internalRoute);
                 if (in_array('engine', $segments)){                             //потому что localhost
-                    $site = array_shift($segments);                             //(localhost/engine, должно быть engine,
-                    unset($site);                                               //лишний элемент)
+                    $site = array_shift($segments);                             //(localhost/engine, должно быть engine,лишний элемент)
                 }
                 $module = array_shift($segments);
                 $moduleFile = ROOT.'app\modules\\'.$module.'\\'.$module.'Module.php';

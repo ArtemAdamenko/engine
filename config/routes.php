@@ -2,7 +2,7 @@
     return array(
         'about' => 'page',
         'home' => 'page',
-        'page/([-_a-z0-9]+)' => 'page',
-        'edit/page/([-_a-z0-9]+)' => 'page',
+        '^page\/(\d+)\/?$' => 'page',
+        '^page\/edit\/(\d+)\/?$' => 'page',
     );
 ?>
