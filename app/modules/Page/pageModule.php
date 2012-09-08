@@ -22,8 +22,7 @@ class pageModule extends Router{
                 $internalRoute = preg_replace("~$pattern~", $route, $uri);
                 $parameters = explode('/', $internalRoute);
                 if (in_array('engine', $parameters)){                             //потому что localhost
-                    $site = array_shift($parameters);                             //(localhost/engine, должно быть engine,
-                    unset($site);                                               //лишний элемент)
+                    $site = array_shift($parameters);                             //(localhost/engine, должно быть engine,лишний элемент)
                 }
                 $controller = array_shift($parameters);
                 $id = array_shift($parameters);
