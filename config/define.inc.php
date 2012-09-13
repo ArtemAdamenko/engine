@@ -8,4 +8,5 @@ require_once(ROOT.'app/classes/View.class.php');
 require_once(ROOT.'app/classes/DB.class.php');
 require_once(ROOT.'app/classes/validation.class.php');
 require_once(ROOT.'app/libs/smarty/Smarty.class.php');
+require_once(ROOT.'app/classes/log.class.php');
 ?>
