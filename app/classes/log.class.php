@@ -35,7 +35,7 @@ class log
      */
     public static $instance = array();
 
-    public function __construct($channel)
+    public function __construct()
     {
 
     }

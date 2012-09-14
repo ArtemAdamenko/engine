@@ -9,14 +9,14 @@ class Router {
     /**Получаем конфигурацию из файла.
      * @param $routesPath путь до маршрутов
      */
-    function __construct($routesPath){
+    public function __construct($routesPath){
         $this->routes = include($routesPath);
     }
 
     /**Метод получает URI. Несколько вариантов представлены для надёжности.
      * @return string url
      */
-    static function getURI(){
+    public static function getURI(){
         if(!empty($_SERVER['REQUEST_URI'])) {
             return trim($_SERVER['REQUEST_URI'], '/');
         }
@@ -33,7 +33,7 @@ class Router {
     /**
      * Распределение по модулям
      */
-    function run(){
+    public function run(){
         $uri = $this->getURI();
         foreach($this->routes as $pattern => $route){
             if(preg_match("~$pattern~", $uri)){
@@ -58,9 +58,8 @@ class Router {
     /*
      * Перенаправление на 404 ошибку
      */
-    static function redirect(){
-        header("HTTP/1.0 404 Not Found");
-        return;
-    }
+
+
+
 }
 ?>
