@@ -21,9 +21,7 @@
         </div>
     </div>
     <div id="content"><div class="hero-unit">
-        <h1>Home</h1>
-
-        <p>This is the main page welcome!Made on the Junior Engine</p>
+    <?=$page?>
     </div></div>
 
 <?php include_once('footer.php')?>
