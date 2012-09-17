@@ -6,7 +6,9 @@
 $smarty = new Smarty();
 $smarty->assign('title', $page['title']);
 $smarty->assign('content', $page['content']);
-$smarty->display(ROOT . 'view\\'.self::MODULE.'\\'.self::$template.'.php');
+$page = include(ROOT . 'view\\'.self::MODULE.'\\'.self::$template.'.php');
+$smarty->assign('page', $page);
+$smarty->display(ROOT . 'view\\'.self::MODULE.'\layout.php');
 
 //View::render(self::MODULE, self::$template, array('title' => $page['title'], 'content'=>$page['content']));
 ?>
